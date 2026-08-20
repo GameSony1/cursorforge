@@ -1,0 +1,13 @@
+node_modules/
+dist/
+out/
+build/
+*.log
+.DS_Store
+.env
+
+# Raw user-supplied reference art (may include third-party/copyrighted
+# material) — never publish, only the processed assets in apps/server/assets
+# ship with the app.
+cursor-art/incoming/*
+!cursor-art/incoming/.gitkeep

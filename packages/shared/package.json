@@ -1,0 +1,11 @@
+{
+  "name": "@cursor-customizer/shared",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "dependencies": {
+    "to-ico": "^1.1.5"
+  }
+}
