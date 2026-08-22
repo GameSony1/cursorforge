@@ -19,15 +19,12 @@ function loadFavorites(): Set<string> {
 
 interface Props {
   serverUrl: string;
-  title: string;
-  subtitle: string;
-  filter: 'all' | 'character' | 'favorites';
   onStatus: (status: StatusMessage) => void;
   onServerOnlineChange: (online: boolean) => void;
   onOpenSettings: () => void;
 }
 
-export function LibraryPage({ serverUrl, title, subtitle, filter, onStatus, onServerOnlineChange, onOpenSettings }: Props) {
+export function LibraryPage({ serverUrl, onStatus, onServerOnlineChange, onOpenSettings }: Props) {
   const [skins, setSkins] = useState<Skin[]>([]);
   const [loadError, setLoadError] = useState(false);
   const [search, setSearch] = useState('');
@@ -61,13 +58,8 @@ export function LibraryPage({ serverUrl, title, subtitle, filter, onStatus, onSe
 
   const visible = useMemo(() => {
     const q = search.trim().toLowerCase();
-    return catalog.filter((item) => {
-      if (q && !item.name.toLowerCase().includes(q)) return false;
-      if (filter === 'character' && item.section !== 'character') return false;
-      if (filter === 'favorites' && !favorites.has(item.id)) return false;
-      return true;
-    });
-  }, [catalog, search, filter, favorites]);
+    return catalog.filter((item) => !q || item.name.toLowerCase().includes(q));
+  }, [catalog, search]);
 
   const grouped = useMemo(() => {
     const map = new Map<CatalogSection, CatalogItem[]>();
@@ -95,9 +87,9 @@ export function LibraryPage({ serverUrl, title, subtitle, filter, onStatus, onSe
     <div className="library-layout">
       <div className="library-main">
         <div className="library-topbar">
-          <h1 className="page-title">{title}</h1>
+          <h1 className="page-title">Библиотека курсоров</h1>
         </div>
-        <p className="page-subtitle">{subtitle}</p>
+        <p className="page-subtitle">Выбери курсор и настрой его в панели справа — изменения применяются ко всей системе Windows.</p>
 
         <div className="library-toolbar">
           <input

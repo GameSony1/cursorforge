@@ -1,6 +1,6 @@
 import logo from '../assets/logo.png';
 
-export type TabId = 'library' | 'editor' | 'animations' | 'characters' | 'collections' | 'mine' | 'favorites' | 'settings';
+export type TabId = 'library' | 'settings';
 
 interface Props {
   active: TabId;
@@ -10,12 +10,6 @@ interface Props {
 
 const ITEMS: { id: TabId; label: string; icon: string }[] = [
   { id: 'library', label: 'Библиотека', icon: '▤' },
-  { id: 'editor', label: 'Редактор', icon: '✏' },
-  { id: 'animations', label: 'Анимации', icon: '◐' },
-  { id: 'characters', label: 'Персонажи', icon: '☺' },
-  { id: 'collections', label: 'Коллекции', icon: '▦' },
-  { id: 'mine', label: 'Мои курсоры', icon: '⬒' },
-  { id: 'favorites', label: 'Избранное', icon: '★' },
   { id: 'settings', label: 'Настройки', icon: '⚙' }
 ];
 

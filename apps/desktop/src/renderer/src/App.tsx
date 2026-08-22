@@ -5,7 +5,6 @@ import { StatusToast, type StatusMessage } from './components/StatusToast';
 import { UpdateBanner, type UpdateState } from './components/UpdateBanner';
 import { LibraryPage } from './pages/LibraryPage';
 import { SettingsPage } from './pages/SettingsPage';
-import { ComingSoonPage } from './pages/ComingSoonPage';
 
 export function App() {
   const [tab, setTab] = useState<TabId>('library');
@@ -37,47 +36,10 @@ export function App() {
           {tab === 'library' && (
             <LibraryPage
               serverUrl={serverUrl}
-              title="Библиотека курсоров"
-              subtitle="Выбери курсор и настрой его во панели справа — изменения применяются ко всей системе Windows."
-              filter="all"
               onStatus={setStatus}
               onServerOnlineChange={setServerOnline}
               onOpenSettings={() => setTab('settings')}
             />
-          )}
-          {tab === 'characters' && (
-            <LibraryPage
-              serverUrl={serverUrl}
-              title="Персонажи"
-              subtitle="Курсоры-компаньоны, скачанные с сервера."
-              filter="character"
-              onStatus={setStatus}
-              onServerOnlineChange={setServerOnline}
-              onOpenSettings={() => setTab('settings')}
-            />
-          )}
-          {tab === 'favorites' && (
-            <LibraryPage
-              serverUrl={serverUrl}
-              title="Избранное"
-              subtitle="Курсоры, отмеченные звёздочкой."
-              filter="favorites"
-              onStatus={setStatus}
-              onServerOnlineChange={setServerOnline}
-              onOpenSettings={() => setTab('settings')}
-            />
-          )}
-          {tab === 'editor' && (
-            <ComingSoonPage title="Редактор" description="Рисование собственного курсора с нуля появится в одном из следующих обновлений." />
-          )}
-          {tab === 'animations' && (
-            <ComingSoonPage title="Анимации" description="Анимированные курсоры (.ani) и живой след за курсором появятся в одном из следующих обновлений." />
-          )}
-          {tab === 'collections' && (
-            <ComingSoonPage title="Коллекции" description="Тематические наборы курсоров появятся в одном из следующих обновлений." />
-          )}
-          {tab === 'mine' && (
-            <ComingSoonPage title="Мои курсоры" description="История и сохранённые собственные пресеты появятся в одном из следующих обновлений." />
           )}
           {tab === 'settings' && (
             <SettingsPage serverUrl={serverUrl} onServerUrlChange={setServerUrl} onStatus={setStatus} />
