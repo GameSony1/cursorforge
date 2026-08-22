@@ -62,8 +62,10 @@ body {
 }
 
 .titlebar-logo {
-  color: var(--accent);
-  text-shadow: 0 0 8px var(--accent);
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  filter: drop-shadow(0 0 4px rgba(139, 92, 246, 0.6));
 }
 
 .titlebar-title {
@@ -148,9 +150,10 @@ body {
 }
 
 .sidebar-brand-icon {
-  color: var(--accent);
-  text-shadow: 0 0 8px var(--accent);
-  font-size: 16px;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  filter: drop-shadow(0 0 6px rgba(139, 92, 246, 0.5));
 }
 
 .sidebar-brand-name {

@@ -1,8 +1,10 @@
+import logo from '../assets/logo-small.png';
+
 export function TitleBar() {
   return (
     <div className="titlebar">
       <div className="titlebar-drag">
-        <span className="titlebar-logo">◆</span>
+        <img className="titlebar-logo" src={logo} alt="" />
         <span className="titlebar-title">CURSOR FORGE</span>
       </div>
       <div className="titlebar-controls">

@@ -7,6 +7,11 @@ release/
 .DS_Store
 .env
 
+# electron-builder's buildResources convention (icons, etc.) — source
+# files, not build output, despite the generic "build/" ignore above.
+!apps/desktop/build/
+!apps/desktop/build/**
+
 # Raw user-supplied reference art (may include third-party/copyrighted
 # material) — never publish, only the processed assets in apps/server/assets
 # ship with the app.

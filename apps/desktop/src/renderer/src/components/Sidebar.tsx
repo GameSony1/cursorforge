@@ -1,3 +1,5 @@
+import logo from '../assets/logo.png';
+
 export type TabId = 'library' | 'editor' | 'animations' | 'characters' | 'collections' | 'mine' | 'favorites' | 'settings';
 
 interface Props {
@@ -21,7 +23,7 @@ export function Sidebar({ active, onChange, serverOnline }: Props) {
   return (
     <nav className="sidebar">
       <div className="sidebar-brand">
-        <span className="sidebar-brand-icon">◆</span>
+        <img className="sidebar-brand-icon" src={logo} alt="" />
         <span className="sidebar-brand-name">CursorForge</span>
       </div>
 
