@@ -1,6 +1,6 @@
 {
   "name": "@cursor-customizer/desktop",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Игровое приложение для кастомизации курсора Windows",
   "author": "GameSony1",
   "private": true,
@@ -16,6 +16,7 @@
     "koffi": "^3.1.6",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "to-ico": "^1.1.5",
     "uiohook-napi": "^1.5.5"
   },
   "devDependencies": {
