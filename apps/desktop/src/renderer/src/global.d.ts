@@ -8,6 +8,11 @@ export interface CursorApi {
     maximizeToggle(): void;
     close(): void;
   };
+  updates: {
+    check(): Promise<void>;
+    install(): void;
+    onEvent(listener: (payload: { status: string; data?: unknown }) => void): () => void;
+  };
 }
 
 declare global {

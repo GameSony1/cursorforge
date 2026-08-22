@@ -1,5 +1,6 @@
 import { join } from 'node:path';
 import { app, BrowserWindow, ipcMain, shell } from 'electron';
+import { autoUpdater } from 'electron-updater';
 import type { ApplyCursorRequest } from '@cursor-customizer/shared';
 import { applyCursor, restoreDefaultCursors } from './cursorManager';
 import { stopClickCursorEngine } from './clickCursorEngine';
@@ -65,8 +66,30 @@ ipcMain.on('window:maximize-toggle', () => {
 });
 ipcMain.on('window:close', () => mainWindow?.close());
 
+function sendUpdateEvent(status: string, data?: unknown): void {
+  mainWindow?.webContents.send('update:event', { status, data });
+}
+
+function setupAutoUpdates(): void {
+  autoUpdater.autoDownload = true;
+  autoUpdater.autoInstallOnAppQuit = true;
+
+  autoUpdater.on('checking-for-update', () => sendUpdateEvent('checking'));
+  autoUpdater.on('update-available', (info) => sendUpdateEvent('available', { version: info.version }));
+  autoUpdater.on('update-not-available', () => sendUpdateEvent('not-available'));
+  autoUpdater.on('download-progress', (progress) => sendUpdateEvent('downloading', { percent: progress.percent }));
+  autoUpdater.on('update-downloaded', (info) => sendUpdateEvent('downloaded', { version: info.version }));
+  autoUpdater.on('error', (err) => sendUpdateEvent('error', { message: err.message }));
+
+  autoUpdater.checkForUpdates().catch((err) => sendUpdateEvent('error', { message: err.message }));
+}
+
+ipcMain.handle('update:check', () => autoUpdater.checkForUpdates().catch(() => undefined));
+ipcMain.on('update:install', () => autoUpdater.quitAndInstall());
+
 app.whenReady().then(() => {
   createWindow();
+  setupAutoUpdates();
 
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();

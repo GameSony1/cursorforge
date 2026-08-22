@@ -1,26 +1,31 @@
 {
   "name": "@cursor-customizer/desktop",
-  "version": "0.1.0",
+  "version": "0.2.0",
+  "description": "Игровое приложение для кастомизации курсора Windows",
+  "author": "GameSony1",
   "private": true,
   "main": "out/main/index.js",
   "scripts": {
     "dev": "electron-vite dev",
     "build": "electron-vite build",
-    "start": "electron-vite preview"
+    "start": "electron-vite preview",
+    "dist": "electron-vite build && electron-builder --win --publish always"
   },
   "dependencies": {
-    "@cursor-customizer/shared": "*",
+    "electron-updater": "^6.3.9",
     "koffi": "^3.1.6",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "uiohook-napi": "^1.5.5"
   },
   "devDependencies": {
+    "@cursor-customizer/shared": "*",
     "@types/node": "^22.9.0",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.3",
     "electron": "^32.2.0",
+    "electron-builder": "^25.1.8",
     "electron-vite": "^2.3.0",
     "typescript": "^5.6.3",
     "vite": "^5.4.10"

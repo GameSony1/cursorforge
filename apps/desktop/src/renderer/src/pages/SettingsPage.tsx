@@ -65,6 +65,13 @@ export function SettingsPage({ serverUrl, onServerUrlChange, onStatus }: Props) 
           Восстановить стандартные курсоры Windows
         </button>
       </div>
+
+      <div className="settings-block">
+        <label className="field-label">Обновления</label>
+        <button className="ghost-btn" onClick={() => window.cursorApi.updates.check()}>
+          Проверить обновления
+        </button>
+      </div>
     </div>
   );
 }

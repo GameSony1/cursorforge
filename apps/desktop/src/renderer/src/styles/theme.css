@@ -107,6 +107,27 @@ body {
   z-index: 1;
 }
 
+.update-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 16px;
+  font-size: 12px;
+  background: var(--bg-2);
+  border-bottom: 1px solid var(--border);
+  color: var(--text-dim);
+  flex-shrink: 0;
+}
+
+.update-banner.downloaded {
+  color: var(--success);
+}
+
+.update-banner.error {
+  color: var(--error);
+}
+
 /* ---------- Sidebar ---------- */
 
 .sidebar {
